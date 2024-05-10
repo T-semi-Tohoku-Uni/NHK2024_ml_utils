@@ -16,7 +16,7 @@ realsenseで取得した生の画像データのファイル名を被らない�
 - `raw`: 生の画像のディレクトリのパス 
 - `output`: ラベリングした画像の保存先
 ```
-python3 util/add_label.py --raw=data --output=datasets/image
+python3 util/add_label.py --raw=data --output=image
 ```
 
 ## TrainデータとValidationデータに分割する
