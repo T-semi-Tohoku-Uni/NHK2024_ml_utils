@@ -3,3 +3,6 @@ data/*
 !data/model
 data/model/*
 datasets
+env
+*.pt
+run

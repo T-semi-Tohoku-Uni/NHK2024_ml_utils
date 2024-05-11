@@ -5,9 +5,9 @@ import shutil
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('image', help='path of dataset dir')
-    parser.add_argument('box', help='path of save dif')
-    parser.add_argument('model', help='path of model dir')
+    parser.add_argument('--image' ,required=True, help='path of dataset dir')
+    parser.add_argument('--box' ,required=True, help='path of save dif')
+    parser.add_argument('--model' ,required=True, help='path of model dir')
     args = parser.parse_args()
     
     image_path = args.image
