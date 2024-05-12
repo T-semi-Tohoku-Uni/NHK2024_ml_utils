@@ -3,6 +3,7 @@ data/*
 !data/model
 data/model/*
 datasets
+datasets.zip
 env
 *.pt
 run

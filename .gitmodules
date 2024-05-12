@@ -1,3 +1,6 @@
 [submodule "NHK2024_blue_ball_training_dataset"]
 	path = NHK2024_blue_ball_training_dataset
 	url = git@github.com:T-semi-Tohoku-Uni/NHK2024_blue_ball_training_dataset.git
+[submodule "NHK2024_red_ball_training_data"]
+	path = NHK2024_red_ball_training_data
+	url = git@github.com:T-semi-Tohoku-Uni/NHK2024_red_ball_training_data.git
