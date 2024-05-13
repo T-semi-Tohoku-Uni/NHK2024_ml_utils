@@ -2,6 +2,6 @@ path: /home/keigo/Development/tsemi/NHK2024_ml_utils/datasets/
 train: trains/
 val: val/
 
-nc: 4
+nc: 3
 
-names: ['silo','blueballw' ,'blueball', 'redball']
+names: ['silo', 'blueball', 'redball']
