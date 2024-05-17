@@ -18,6 +18,6 @@ if __name__ == "__main__":
     model.train(
         data=yaml_path,
         epochs=2000, 
-        batch=32,
+        batch=48,
         project=save_dir,
     )

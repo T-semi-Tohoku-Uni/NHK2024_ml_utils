@@ -1,4 +1,4 @@
-path: /home/keigo/Development/tsemi/NHK2024_ml_utils/datasets/
+path: /home/keigo/Development/tsemi/NHK2024_ml_utils/datasets/silo/
 train: trains/
 val: val/
 

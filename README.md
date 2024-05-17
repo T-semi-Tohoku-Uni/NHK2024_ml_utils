@@ -22,6 +22,11 @@ sftp ユーザー名@ホスト名
 zip -r datasets.zip datasets/
 ```
 
+画像を180度回転させたデータも学習データとして扱う
+```
+python3 util/augmentation.py --base=datasets/silo --image=image --box=box
+```
+
 データセットを, 学習用と検証用のデータセットに分割する.
 ```
 python3 util/split.py --datasets=datasets --image=image --box=box

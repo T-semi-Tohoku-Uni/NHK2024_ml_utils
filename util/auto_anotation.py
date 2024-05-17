@@ -39,6 +39,7 @@ if __name__ == "__main__":
             f.write(f"{int(cls)} {(boxes.xywhn[index][0])} {boxes.xywhn[index][1]} {boxes.xywhn[index][2]} {boxes.xywhn[index][3]}\n")
         
     # create classes.txt
+    print(model.names)
     with open(os.path.join(box_path, "classes.txt"), "w") as f:
         for value in model.names.values():
             f.write(value + '\n')
