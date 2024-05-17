@@ -28,20 +28,22 @@ def create_name_with_timestamp(s_dir, output_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw", required=True, help="raw image data directory")
+    parser.add_argument("--base", required=True, help="base directory")
     parser.add_argument("--output", required=True, help="target directory")
     
     ignore_frame = "depth_frame"
     
     args = parser.parse_args()
     raw_image_data_dir = args.raw
-    output_dir = os.path.join("datasets",args.output)
+    base_dir = args.base
+    output_dir = os.path.join(base_dir,args.output)
     
     # create output directory
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
     # create box dir to save bounding box text file
-    if not os.path.exists(os.path.join("datasets", "box")):
-        os.makedirs(os.path.join("datasets", "box"))
+    if not os.path.exists(os.path.join(base_dir, "box")):
+        os.makedirs(os.path.join(base_dir, "box"))
     
     create_name_with_timestamp(raw_image_data_dir, output_dir)

@@ -1,0 +1,7 @@
+path: /home/keigo/Development/tsemi/NHK2024_ml_utils/datasets/red
+train: trains/
+val: val/
+
+nc: 2
+
+names: ['purpleball', 'redball']

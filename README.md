@@ -4,7 +4,7 @@
 # 学習の流れ
 まず, 画像ファイル名のファイル名をユニークにして, `datasets/image`ディレクトリに保存する. 
 ```
-python3 util/add_label.py --raw=data --output=image
+python3 util/add_label.py --raw=data --base=datasets/red --output=image
 ```
 その後, 現在のモデルを使用して自動でアノテーションを行う.
 ```
