@@ -34,7 +34,7 @@ python3 util/split.py --datasets=datasets --image=image --box=box
 
 最後にモデルを再学習させる
 ```
-python3 train.py
+python3 train.py --model=yolov8s.pt --yaml=settings/red_model.yaml 
 ```
 学習結果は`run`ディレクトリに格納される.
 
