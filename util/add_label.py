@@ -18,6 +18,8 @@ def create_name_with_timestamp(s_dir, output_dir):
         
         if os.path.isfile(file_or_dir_path):
             new_file_name = add_timestamp_to_filename()
+            if not (file_or_dir_path.endswith("jpeg") or file_or_dir_path.endswith("jpg")):
+                continue
             shutil.copy(file_or_dir_path, os.path.join(output_dir, new_file_name))
         else:
             if ignore_frame in file_or_dir_path:

@@ -8,7 +8,7 @@ python3 util/add_label.py --raw=data --base=datasets/red --output=image
 ```
 その後, 現在のモデルを使用して自動でアノテーションを行う.
 ```
-python3 util/auto_anotation.py --image=datasets/image --box=datasets/bounding_box --model=model/...
+python3 util/auto_anotation.py --image=datasets/image --box=datasets/bounding_box --model=model/... --ratio=10
 ```
 `labelImg`を使って手動でチェックする. 
 自動アノテーションをしたデータをサーバーからローカルに持ってくる方法
