@@ -23,33 +23,40 @@ if __name__ == "__main__":
     
     # datasets_dirの中にあるファイルを全て取り出す
     for filename in os.listdir(image_path):
-        file_path = os.path.join(image_path, filename)
-        
-        # YOLO
-        results = model.predict(file_path)
-        
-        # # save_dirに保存
-        output_filename = os.path.splitext(filename)[0] + ".txt"
-        save_txt_path = os.path.join(box_path, output_filename)
-        
-        classes = results[0].boxes.cls
-        boxes = results[0].boxes
-        
-        print(classes)
-        print(boxes.xyxy)
+        try:
+            file_path = os.path.join(image_path, filename)
+            
+            # YOLO
+            results = model.predict(file_path)
+            
+            # # save_dirに保存
+            output_filename = os.path.splitext(filename)[0] + ".txt"
+            save_txt_path = os.path.join(box_path, output_filename)
+            
+            classes = results[0].boxes.cls
+            boxes = results[0].boxes
+            
+            print(classes)
+            print(boxes.xyxy)
 
-        # もしclassesが空 or いらないファイルなら、txtファイルを作成せずに、画像ファイルを削除する
-        data_cnt += 1
-        if len(classes) == 0 or not data_cnt % int(ratio) == 0:
+            # もしclassesが空 or いらないファイルなら、txtファイルを作成せずに、画像ファイルを削除する
+            data_cnt += 1
+            if len(classes) == 0 or not data_cnt % int(ratio) == 0:
+                os.remove(file_path)
+                continue
+            
+            with open(save_txt_path, "w") as f:
+                for index, cls in enumerate(classes):
+                    f.write(f"{int(cls)} {(boxes.xywhn[index][0])} {boxes.xywhn[index][1]} {boxes.xywhn[index][2]} {boxes.xywhn[index][3]}\n")
+
+        except Exception as e:
             os.remove(file_path)
+            print(e)
+            print(f"Error: {file_path}")
             continue
-        
-        with open(save_txt_path, "w") as f:
-          for index, cls in enumerate(classes):
-            f.write(f"{int(cls)} {(boxes.xywhn[index][0])} {boxes.xywhn[index][1]} {boxes.xywhn[index][2]} {boxes.xywhn[index][3]}\n")
         
     # create classes.txt
     print(model.names)
-    with open(os.path.join(box_path, "classes.txt"), "w") as f:
+    with open(os.path.join(box_path, "classes.txt"), "a") as f:
         for value in model.names.values():
             f.write(value + '\n')

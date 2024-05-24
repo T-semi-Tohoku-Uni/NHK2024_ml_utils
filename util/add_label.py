@@ -22,9 +22,13 @@ def create_name_with_timestamp(s_dir, output_dir):
                 continue
             shutil.copy(file_or_dir_path, os.path.join(output_dir, new_file_name))
         else:
-            if ignore_frame in file_or_dir_path:
-                print(file_or_dir_path)
-                continue
+            # if ignore_frame in file_or_dir_path:
+            #     print(file_or_dir_path)
+            #     continue
+            for ignore in ignore_frame:
+                if ignore in file_or_dir_path:
+                    print(file_or_dir_path)
+                    continue
             create_name_with_timestamp(file_or_dir_path, output_dir)
 
 if __name__ == "__main__":
@@ -33,7 +37,7 @@ if __name__ == "__main__":
     parser.add_argument("--base", required=True, help="base directory")
     parser.add_argument("--output", required=True, help="target directory")
     
-    ignore_frame = "depth_frame"
+    ignore_frame = ["depth_frame", "anotated"]
     
     args = parser.parse_args()
     raw_image_data_dir = args.raw
