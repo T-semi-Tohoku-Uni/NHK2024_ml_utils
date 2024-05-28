@@ -8,7 +8,7 @@ python3 util/add_label.py --raw=data --base=datasets/red --output=image
 ```
 その後, 現在のモデルを使用して自動でアノテーションを行う.
 ```
-python3 util/auto_anotation.py --image=datasets/image --box=datasets/bounding_box --model=model/... --ratio=10
+python3 util/auto_anotation.py --image=datasets/silo/image/ --box=datasets/silo/box --model=... --ratio=10
 ```
 `labelImg`を使って手動でチェックする. 
 自動アノテーションをしたデータをサーバーからローカルに持ってくる方法
@@ -16,6 +16,12 @@ python3 util/auto_anotation.py --image=datasets/image --box=datasets/bounding_bo
 sftp ユーザー名@ホスト名
 > get サーバーのパス ローカルのパス
 ```
+
+zipファイルに保存する前に, data argumantしたものを削除
+```
+python3 util/delete_rotated.py --datasets=datasets/...
+```
+
 
 アノテーションが完了したら, 画像とアノテーションのテキストファイルをzipファイルに保存する.
 ```
