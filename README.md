@@ -46,6 +46,28 @@ python3 train.py --model=yolov8s.pt --yaml=settings/red_model.yaml
 
 学習が終わったら, `bets.pt`を対象のリポジトにアップロード, データセットのzipファイルをgithubのrelease機能を使ってアップロードする.
 
+### 青と紫のデータセットを学習させる場合
+まず`data`ディレクトリに追加で学習するデータをおく.
+次のコマンドを実行
+```
+python3 util/add_label.py --raw=data --base=datasets/blue --output=image
+```
+```
+python3 util/auto_anotation.py --image=datasets/blue/image/ --box=datasets/blue/box --model=NHK2024_blue_ball_model/blue_ball_model.pt --ratio=10
+```
+頑張ってアノテーションする
+
+前回のデータと統合した後
+```
+python3 util/augmentation.py --base=datasets/blue --image=image --box=box
+```
+```
+python3 util/split.py --datasets=datasets/blue --image=image --box=box
+```
+```
+python3 train.py --model=yolov8s.pt --yaml=settings/blue_model.yaml 
+```
+
 # それぞれのプログラムの使いかた
 
 ## 注意
